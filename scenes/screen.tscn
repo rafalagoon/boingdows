@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7adl14i5pywr"]
+
+[ext_resource type="Script" path="res://scenes/screen.gd" id="1_7syn0"]
+[ext_resource type="Texture2D" uid="uid://bg1u53tfjnc4w" path="res://icon.svg" id="1_7vcvx"]
+[ext_resource type="PackedScene" uid="uid://cjtx1c3yg1faj" path="res://scenes/virtual_window.tscn" id="2_ltyuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7xac"]
+size = Vector2(113.5, 1273.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87fqg"]
+size = Vector2(2152, 92)
+
+[node name="Screen" type="Node2D"]
+script = ExtResource("1_7syn0")
+metadata/_edit_vertical_guides_ = [1280.0, 640.0, -640.0]
+metadata/_edit_horizontal_guides_ = [780.0, -300.0]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-696.75, 250.25)
+shape = SubResource("RectangleShape2D_d7xac")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1336.25, 250.25)
+shape = SubResource("RectangleShape2D_d7xac")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(320, -346)
+shape = SubResource("RectangleShape2D_87fqg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(320, 826)
+shape = SubResource("RectangleShape2D_87fqg")
+
+[node name="VirtualWindow" parent="." instance=ExtResource("2_ltyuw")]
+position = Vector2(320, 240)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(320, 222)
+texture = ExtResource("1_7vcvx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[connection signal="position_change" from="VirtualWindow" to="." method="_on_window_position_change"]

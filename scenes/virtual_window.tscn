@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjtx1c3yg1faj"]
+
+[ext_resource type="Script" path="res://scenes/virtual_window.gd" id="1_jxy68"]
+[ext_resource type="AudioStream" uid="uid://cfcew2f0wwivv" path="res://assets/audio/boing.ogg" id="2_h3w4n"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a5hho"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0o8g"]
+size = Vector2(640, 480)
+
+[node name="VirtualWindow" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_a5hho")
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_jxy68")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u0o8g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_h3w4n")
+max_polyphony = 3
+panning_strength = 1.95
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
