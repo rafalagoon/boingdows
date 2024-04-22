@@ -2,6 +2,13 @@
 
 Small experiment with the program's own window and the Godot Engine physics engine.
 
+*Project developed on Twitch live streaming*
+
+You can watch the vídeo here:
+
+[![Boingdows: VENTANAS Y FÍSICAS](https://i3.ytimg.com/vi/SGCYCcrqp70/maxresdefault.jpg)](https://www.youtube.com/watch?v=SGCYCcrqp70)
+
+
 ## How does it work
 
 The project consists of a 640x480 window, which is internally represented by a RigidBody of the same size and a StaticBody that acts as screen boundaries.
@@ -30,5 +37,3 @@ It is the force multiplier, the higher it is, the faster it will move. According
 MIT.
 
 Author: Rafa Laguna
-
-*Project developed on Twitch streaming*
